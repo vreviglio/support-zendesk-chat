@@ -3,7 +3,6 @@
 var onMessage = function onMessage(channelName, callback) {
   var channel = new BroadcastChannel(channelName);
   channel.addEventListener('message', function (event) {
-    console.log('MENSAJE RECIBIDO');
     callback(event.data);
   });
 };
@@ -30,14 +29,13 @@ var CHANNEL_NAME = 'zendesk-channel';
 // Adds a message listener to the specified iframe
 var initializeIframeListener = function initializeIframeListener() {
   onMessage(CHANNEL_NAME, function (data) {
-    console.log(data);
     if (!data) {
       console.warn("Invalid event or event data");
       return;
     }
-    var action = zendeskActions[data.action];
+    var action = zendeskActions[data];
     if (!action) {
-      console.warn("No action defined for ".concat(data.action));
+      console.warn("No action defined for ".concat(data));
       return;
     }
     action();
@@ -69,7 +67,6 @@ var injectZendeskScript = function injectZendeskScript() {
   document.body.appendChild(script);
 };
 
-console.log('SCRIPT LOADED');
 // Inject the Zendesk script tag into the target project
 injectZendeskScript();
 
