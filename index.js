@@ -70,7 +70,10 @@ var injectZendeskScript = function injectZendeskScript() {
 };
 
 // Inject the Zendesk script tag into the target project
+console.log('Script Loaded');
+console.log('Starting injection');
 injectZendeskScript();
+console.log('Script injected');
 
 // Initialize the iframe listener
 initializeIframeListener();
