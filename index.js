@@ -6,10 +6,6 @@ var onMessage = function onMessage(channelName, callback) {
     console.log('RECEIVE MESSAGE');
     callback(event.data);
   };
-  channel.addEventListener('message', function (event) {
-    console.log('RECEIVE MESSAGE');
-    callback(event.data);
-  });
 };
 
 var openChat = function openChat() {
