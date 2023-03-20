@@ -3,6 +3,7 @@
 var onMessage = function onMessage(channelName, callback) {
   var channel = new BroadcastChannel(channelName);
   channel.addEventListener('message', function (event) {
+    console.log('RECEIVE MESSAGE');
     callback(event.data);
   });
 };
