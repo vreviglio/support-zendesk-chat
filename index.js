@@ -64,7 +64,9 @@ var injectZendeskScript = function injectZendeskScript() {
   script.addEventListener('load', function () {
     return hideChat();
   });
+  console.log('Appending child', script);
   document.body.appendChild(script);
+  console.log('Child appended');
 };
 
 // Inject the Zendesk script tag into the target project
