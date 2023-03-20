@@ -30,6 +30,7 @@ var CHANNEL_NAME = 'zendesk-channel';
 // Adds a message listener to the specified iframe
 var initializeIframeListener = function initializeIframeListener() {
   onMessage(CHANNEL_NAME, function (data) {
+    console.log(data);
     if (!data) {
       console.warn("Invalid event or event data");
       return;
