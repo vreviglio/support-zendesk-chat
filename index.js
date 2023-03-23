@@ -33,9 +33,9 @@ var initializeIframeListener = function initializeIframeListener() {
       console.warn("Invalid event or event data");
       return;
     }
-    var action = zendeskActions[data.action];
+    var action = zendeskActions[data];
     if (!action) {
-      console.warn("No action defined for ".concat(data.action));
+      console.warn("No action defined for ".concat(data));
       return;
     }
     action();
