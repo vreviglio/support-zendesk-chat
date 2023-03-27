@@ -33,9 +33,9 @@ var initializeIframeListener = function initializeIframeListener() {
       console.warn("Invalid event or event data");
       return;
     }
-    var action = zendeskActions[data];
+    var action = zendeskActions[data === null || data === void 0 ? void 0 : data.type];
     if (!action) {
-      console.warn("No action defined for ".concat(data));
+      console.warn("No action defined for ".concat(data === null || data === void 0 ? void 0 : data.type));
       return;
     }
     action();
@@ -43,8 +43,8 @@ var initializeIframeListener = function initializeIframeListener() {
 };
 
 var getQueryParamFromString = function getQueryParamFromString(scriptSrc, paramName) {
-  var urlSearchParams = new URLSearchParams(scriptSrc.split('?')[1]);
-  return urlSearchParams.get(paramName);
+  var url = new URL(scriptSrc);
+  return url.searchParams.get(paramName);
 };
 
 /* eslint-disable no-console */
