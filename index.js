@@ -7,14 +7,25 @@ var onMessage = function onMessage(channelName, callback) {
   });
 };
 
-var openChat = function openChat() {
-  var _window, _window2;
-  (_window = window) === null || _window === void 0 ? void 0 : _window.zE('webWidget', 'show');
-  (_window2 = window) === null || _window2 === void 0 ? void 0 : _window2.zE('webWidget', 'open');
+var openChat = function openChat(payload) {
+  var _window, _payload$tags, _window3, _window4;
+  var isChatting = (_window = window) === null || _window === void 0 ? void 0 : _window.zE('webWidget:get', 'chat:isChatting');
+
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  if (isChatting) {
+    return;
+  }
+  if (payload !== null && payload !== void 0 && (_payload$tags = payload.tags) !== null && _payload$tags !== void 0 && _payload$tags.length) {
+    var _window2;
+    (_window2 = window) === null || _window2 === void 0 ? void 0 : _window2.zE('webWidget', 'chat:addTags', payload === null || payload === void 0 ? void 0 : payload.tags);
+  }
+  (_window3 = window) === null || _window3 === void 0 ? void 0 : _window3.zE('webWidget', 'show');
+  (_window4 = window) === null || _window4 === void 0 ? void 0 : _window4.zE('webWidget', 'open');
 };
 var hideChat = function hideChat() {
-  var _window3;
-  (_window3 = window) === null || _window3 === void 0 ? void 0 : _window3.zE('webWidget', 'hide');
+  var _window5;
+  (_window5 = window) === null || _window5 === void 0 ? void 0 : _window5.zE('webWidget', 'hide');
 };
 
 var zendeskActions = /*#__PURE__*/Object.freeze({
@@ -38,7 +49,8 @@ var initializeIframeListener = function initializeIframeListener() {
       console.warn("No action defined for ".concat(data === null || data === void 0 ? void 0 : data.type));
       return;
     }
-    action();
+    var payload = data === null || data === void 0 ? void 0 : data.payload;
+    action(payload);
   });
 };
 
@@ -67,9 +79,14 @@ var injectZendeskScript = function injectZendeskScript() {
   document.body.appendChild(script);
 };
 
-// Inject the Zendesk script tag into the target project
-injectZendeskScript();
+console.log('A vel');
+try {
+  // Inject the Zendesk script tag into the target project
+  injectZendeskScript();
 
-// Initialize the iframe listener
-initializeIframeListener();
+  // Initialize the iframe listener
+  initializeIframeListener();
+} catch (error) {
+  console.log(error);
+}
 //# sourceMappingURL=index.js.map
