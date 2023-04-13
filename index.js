@@ -3698,6 +3698,7 @@ var initializeZendeskIntegration = function initializeZendeskIntegration() {
   document.body.appendChild(script);
 };
 
+console.log('NEW VERSION IS BEING EXECUTED');
 // Set up zendeskConfiguration and inject the Zendesk script tag into the target project
 initializeZendeskIntegration();
 
