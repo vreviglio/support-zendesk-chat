@@ -9,10 +9,6 @@ var onMessage = function onMessage(channelName, callback) {
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
-function getDefaultExportFromCjs (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
-}
-
 /** Used for built-in method references. */
 
 var objectProto$e = Object.prototype;
@@ -726,50 +722,46 @@ function stubFalse() {
 
 var stubFalse_1 = stubFalse;
 
-isBuffer$3.exports;
-
 (function (module, exports) {
-	var root = _root,
-	    stubFalse = stubFalse_1;
+var root = _root,
+    stubFalse = stubFalse_1;
 
-	/** Detect free variable `exports`. */
-	var freeExports = exports && !exports.nodeType && exports;
+/** Detect free variable `exports`. */
+var freeExports = exports && !exports.nodeType && exports;
 
-	/** Detect free variable `module`. */
-	var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
+/** Detect free variable `module`. */
+var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
 
-	/** Detect the popular CommonJS extension `module.exports`. */
-	var moduleExports = freeModule && freeModule.exports === freeExports;
+/** Detect the popular CommonJS extension `module.exports`. */
+var moduleExports = freeModule && freeModule.exports === freeExports;
 
-	/** Built-in value references. */
-	var Buffer = moduleExports ? root.Buffer : undefined;
+/** Built-in value references. */
+var Buffer = moduleExports ? root.Buffer : undefined;
 
-	/* Built-in method references for those with the same name as other `lodash` methods. */
-	var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeIsBuffer = Buffer ? Buffer.isBuffer : undefined;
 
-	/**
-	 * Checks if `value` is a buffer.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @since 4.3.0
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
-	 * @example
-	 *
-	 * _.isBuffer(new Buffer(2));
-	 * // => true
-	 *
-	 * _.isBuffer(new Uint8Array(2));
-	 * // => false
-	 */
-	var isBuffer = nativeIsBuffer || stubFalse;
+/**
+ * Checks if `value` is a buffer.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.3.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a buffer, else `false`.
+ * @example
+ *
+ * _.isBuffer(new Buffer(2));
+ * // => true
+ *
+ * _.isBuffer(new Uint8Array(2));
+ * // => false
+ */
+var isBuffer = nativeIsBuffer || stubFalse;
 
-	module.exports = isBuffer; 
-} (isBuffer$3, isBuffer$3.exports));
-
-var isBufferExports = isBuffer$3.exports;
+module.exports = isBuffer;
+}(isBuffer$3, isBuffer$3.exports));
 
 var baseGetTag$1 = _baseGetTag,
     isLength$1 = isLength_1,
@@ -850,46 +842,42 @@ var _baseUnary = baseUnary$1;
 
 var _nodeUtil = {exports: {}};
 
-_nodeUtil.exports;
-
 (function (module, exports) {
-	var freeGlobal = _freeGlobal;
+var freeGlobal = _freeGlobal;
 
-	/** Detect free variable `exports`. */
-	var freeExports = exports && !exports.nodeType && exports;
+/** Detect free variable `exports`. */
+var freeExports = exports && !exports.nodeType && exports;
 
-	/** Detect free variable `module`. */
-	var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
+/** Detect free variable `module`. */
+var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
 
-	/** Detect the popular CommonJS extension `module.exports`. */
-	var moduleExports = freeModule && freeModule.exports === freeExports;
+/** Detect the popular CommonJS extension `module.exports`. */
+var moduleExports = freeModule && freeModule.exports === freeExports;
 
-	/** Detect free variable `process` from Node.js. */
-	var freeProcess = moduleExports && freeGlobal.process;
+/** Detect free variable `process` from Node.js. */
+var freeProcess = moduleExports && freeGlobal.process;
 
-	/** Used to access faster Node.js helpers. */
-	var nodeUtil = (function() {
-	  try {
-	    // Use `util.types` for Node.js 10+.
-	    var types = freeModule && freeModule.require && freeModule.require('util').types;
+/** Used to access faster Node.js helpers. */
+var nodeUtil = (function() {
+  try {
+    // Use `util.types` for Node.js 10+.
+    var types = freeModule && freeModule.require && freeModule.require('util').types;
 
-	    if (types) {
-	      return types;
-	    }
+    if (types) {
+      return types;
+    }
 
-	    // Legacy `process.binding('util')` for Node.js < 10.
-	    return freeProcess && freeProcess.binding && freeProcess.binding('util');
-	  } catch (e) {}
-	}());
+    // Legacy `process.binding('util')` for Node.js < 10.
+    return freeProcess && freeProcess.binding && freeProcess.binding('util');
+  } catch (e) {}
+}());
 
-	module.exports = nodeUtil; 
-} (_nodeUtil, _nodeUtil.exports));
-
-var _nodeUtilExports = _nodeUtil.exports;
+module.exports = nodeUtil;
+}(_nodeUtil, _nodeUtil.exports));
 
 var baseIsTypedArray = _baseIsTypedArray,
     baseUnary = _baseUnary,
-    nodeUtil = _nodeUtilExports;
+    nodeUtil = _nodeUtil.exports;
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -920,7 +908,7 @@ var baseKeys$1 = _baseKeys,
     isArguments$2 = isArguments_1,
     isArray$8 = isArray_1,
     isArrayLike$2 = isArrayLike_1,
-    isBuffer$2 = isBufferExports,
+    isBuffer$2 = isBuffer$3.exports,
     isPrototype$1 = _isPrototype,
     isTypedArray$2 = isTypedArray_1;
 
@@ -992,8 +980,6 @@ function isEmpty(value) {
 }
 
 var isEmpty_1 = isEmpty;
-
-var isEmpty$1 = /*@__PURE__*/getDefaultExportFromCjs(isEmpty_1);
 
 /**
  * A specialized version of `_.map` for arrays without support for iteratee
@@ -2207,7 +2193,7 @@ var _isIndex = isIndex$3;
 var baseTimes = _baseTimes,
     isArguments$1 = isArguments_1,
     isArray$6 = isArray_1,
-    isBuffer$1 = isBufferExports,
+    isBuffer$1 = isBuffer$3.exports,
     isIndex$2 = _isIndex,
     isTypedArray$1 = isTypedArray_1;
 
@@ -2406,7 +2392,7 @@ var Stack$1 = _Stack,
     equalObjects = _equalObjects,
     getTag = _getTag,
     isArray$5 = isArray_1,
-    isBuffer = isBufferExports,
+    isBuffer = isBuffer$3.exports,
     isTypedArray = isTypedArray_1;
 
 /** Used to compose bitmasks for value comparisons. */
@@ -3594,16 +3580,14 @@ function pickBy(object, predicate) {
 
 var pickBy_1 = pickBy;
 
-var pickBy$1 = /*@__PURE__*/getDefaultExportFromCjs(pickBy_1);
-
 var openChat = function openChat(payload) {
   var _payload$tags, _window$zE3, _window3, _window$zE4, _window4, _window$zE5, _window5;
   if (payload !== null && payload !== void 0 && (_payload$tags = payload.tags) !== null && _payload$tags !== void 0 && _payload$tags.length) {
     var _window$zE, _window;
     (_window$zE = (_window = window).zE) === null || _window$zE === void 0 ? void 0 : _window$zE.call(_window, 'webWidget', 'chat:addTags', payload.tags);
   }
-  var visitorInfo = pickBy$1(payload === null || payload === void 0 ? void 0 : payload.visitorInfo);
-  if (!isEmpty$1(visitorInfo)) {
+  var visitorInfo = pickBy_1(payload === null || payload === void 0 ? void 0 : payload.visitorInfo);
+  if (!isEmpty_1(visitorInfo)) {
     var _window$zE2, _window2;
     (_window$zE2 = (_window2 = window).zE) === null || _window$zE2 === void 0 ? void 0 : _window$zE2.call(_window2, 'webWidget', 'identify', visitorInfo);
   }
