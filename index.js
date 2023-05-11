@@ -3586,7 +3586,7 @@ var openChat = function openChat(payload) {
     var _window$zE, _window;
     (_window$zE = (_window = window).zE) === null || _window$zE === void 0 ? void 0 : _window$zE.call(_window, 'webWidget', 'chat:addTags', payload.tags);
   }
-  var visitorInfo = pickBy_1(payload === null || payload === void 0 ? void 0 : payload.visitorInfo);
+  var visitorInfo = pickBy_1(payload === null || payload === void 0 ? void 0 : payload.visitor_info);
   if (!isEmpty_1(visitorInfo)) {
     var _window$zE2, _window2;
     (_window$zE2 = (_window2 = window).zE) === null || _window$zE2 === void 0 ? void 0 : _window$zE2.call(_window2, 'webWidget', 'identify', visitorInfo);
@@ -3599,9 +3599,14 @@ var openChat = function openChat(payload) {
     }
   });
 };
+var hideChat = function hideChat() {
+  var _window6, _window6$zE;
+  (_window6 = window) === null || _window6 === void 0 ? void 0 : (_window6$zE = _window6.zE) === null || _window6$zE === void 0 ? void 0 : _window6$zE.call(_window6, 'webWidget', 'hide');
+};
 
 var chatActions = /*#__PURE__*/Object.freeze({
   __proto__: null,
+  hideChat: hideChat,
   openChat: openChat
 });
 
@@ -3653,7 +3658,8 @@ var setZendeskChatConfiguration = function setZendeskChatConfiguration() {
         }
       },
       color: {
-        theme: '#7145D6'
+        theme: '#7145D6',
+        button: '#262645'
       },
       chat: {
         concierge: {
@@ -3698,7 +3704,6 @@ var initializeZendeskIntegration = function initializeZendeskIntegration() {
   document.body.appendChild(script);
 };
 
-console.log('NEW VERSION IS BEING EXECUTED');
 // Set up zendeskConfiguration and inject the Zendesk script tag into the target project
 initializeZendeskIntegration();
 
