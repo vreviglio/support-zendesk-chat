@@ -3603,10 +3603,17 @@ var hideChat = function hideChat() {
   var _window6, _window6$zE;
   (_window6 = window) === null || _window6 === void 0 ? void 0 : (_window6$zE = _window6.zE) === null || _window6$zE === void 0 ? void 0 : _window6$zE.call(_window6, 'webWidget', 'hide');
 };
+var onChatEnd = function onChatEnd(callback) {
+  var _window7, _window7$zE;
+  (_window7 = window) === null || _window7 === void 0 ? void 0 : (_window7$zE = _window7.zE) === null || _window7$zE === void 0 ? void 0 : _window7$zE.call(_window7, 'webWidget:on', 'chat:end', function () {
+    callback();
+  });
+};
 
 var chatActions = /*#__PURE__*/Object.freeze({
   __proto__: null,
   hideChat: hideChat,
+  onChatEnd: onChatEnd,
   openChat: openChat
 });
 
@@ -3701,6 +3708,9 @@ var initializeZendeskIntegration = function initializeZendeskIntegration() {
   }
   setZendeskChatConfiguration();
   var script = createZendeskScriptElement(key);
+  script.onload = function () {
+    return onChatEnd(hideChat);
+  };
   document.body.appendChild(script);
 };
 
